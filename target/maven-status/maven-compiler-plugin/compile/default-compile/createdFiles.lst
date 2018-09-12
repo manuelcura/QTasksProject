@@ -1,0 +1,12 @@
+Service/UserController.class
+Domain/TaskTag.class
+Domain/User.class
+Service/TaskController.class
+Service/ApplicationConfig.class
+util/NewCrossOriginResourceSharingFilter.class
+Dao/QTasksDao.class
+Domain/Task.class
+Beans/TaskBean.class
+Domain/Task_.class
+Beans/UserBean.class
+Domain/User_.class
