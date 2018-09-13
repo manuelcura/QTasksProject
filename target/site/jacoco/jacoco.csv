@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+QTasks,Beans,TaskBean,41,0,2,0,10,0,8,0,7,0
+QTasks,Beans,UserBean,74,0,8,0,17,0,10,0,6,0
+QTasks,Dao,QTasksDao,1303,567,210,46,98,119,129,14,4,11
+QTasks,util,NewCrossOriginResourceSharingFilter,19,0,0,0,5,0,2,0,2,0
+QTasks,Service,TaskController,38,0,0,0,7,0,6,0,6,0
+QTasks,Service,ApplicationConfig,25,0,0,0,8,0,3,0,3,0
+QTasks,Service,UserController,28,0,0,0,6,0,5,0,5,0
+QTasks,Domain,TaskTag,0,68,0,0,0,2,0,4,0,4
+QTasks,Domain,User_,3,0,0,0,1,0,1,0,1,0
+QTasks,Domain,User,46,39,0,0,11,15,6,6,6,6
+QTasks,Domain,Task_,3,0,0,0,1,0,1,0,1,0
+QTasks,Domain,Task,89,70,0,0,21,25,12,8,12,8

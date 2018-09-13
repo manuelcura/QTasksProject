@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>UserController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">QTasks</a> &gt; <a href="index.source.html" class="el_package">Service</a> &gt; <span class="el_source">UserController.java</span></div><h1>UserController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Service;
+
+import Beans.UserBean;
+import Domain.User;
+import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+/**
+ *
+ * @author manuelcura
+ */
+@Stateless
+@Path(&quot;user&quot;)
+<span class="nc" id="L26">public class UserController {</span>
+    
+<span class="nc" id="L28">    private final UserBean userBean = UserBean.getInstance();</span>
+    
+    @GET
+    @Path(&quot;{id}&quot;)
+    @Produces({MediaType.APPLICATION_JSON})
+    public User findUser(@PathParam(&quot;id&quot;) Integer id) {
+<span class="nc" id="L34">        return userBean.getUser(id);</span>
+    }
+    
+    @POST
+    @Path(&quot;/login&quot;)
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public User validateUser(User user) {
+<span class="nc" id="L42">        return userBean.validateUser(user);</span>
+    }
+    
+    @POST
+    @Path(&quot;/register&quot;)
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public User registerUser(User user) {
+<span class="nc" id="L50">        return userBean.createUser(user);</span>
+    }
+
+    @DELETE
+    @Path(&quot;{id}&quot;)
+    public boolean removeUser(@PathParam(&quot;id&quot;) Integer id) {
+<span class="nc" id="L56">        return userBean.deleteUser(id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

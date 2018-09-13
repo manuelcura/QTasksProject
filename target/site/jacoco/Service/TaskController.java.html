@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TaskController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">QTasks</a> &gt; <a href="index.source.html" class="el_package">Service</a> &gt; <span class="el_source">TaskController.java</span></div><h1>TaskController.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Service;
+
+import Beans.TaskBean;
+import Domain.Task;
+import java.util.List;
+import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+/**
+ *
+ * @author manuelcura
+ */
+@Stateless
+@Path(&quot;task&quot;)
+<span class="nc" id="L28">public class TaskController {</span>
+    
+<span class="nc" id="L30">    private final TaskBean taskBean = TaskBean.getInstance();</span>
+    
+    @GET
+    @Path(&quot;{id}&quot;)
+    @Produces({MediaType.APPLICATION_JSON})
+    public Task findTask(@PathParam(&quot;id&quot;) Integer id) {
+<span class="nc" id="L36">        return taskBean.getTask(id);</span>
+    }
+    
+    @GET
+    @Path(&quot;all/{id}&quot;)
+    @Produces({MediaType.APPLICATION_JSON})
+    public List&lt;Task&gt; findAllTask(@PathParam(&quot;id&quot;) Integer id) {
+<span class="nc" id="L43">        return taskBean.getAllTask(id);</span>
+    }
+    
+    @POST
+    @Path(&quot;{id}&quot;)
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Task createTask(@PathParam(&quot;id&quot;) Integer id, Task task) {
+<span class="nc" id="L51">        return taskBean.createTask(task, id);</span>
+    }
+
+    @PUT
+    @Path(&quot;{id}&quot;)
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Task editTask(@PathParam(&quot;id&quot;) Integer id, Task task) {
+<span class="nc" id="L59">        return taskBean.updateTask(task, id);</span>
+    }
+
+    @DELETE
+    @Path(&quot;{id}&quot;)
+    @Produces({MediaType.APPLICATION_JSON})
+    public boolean removeTask(@PathParam(&quot;id&quot;) Integer id) {
+<span class="nc" id="L66">        return taskBean.deleteTask(id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Task.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">QTasks</a> &gt; <a href="index.source.html" class="el_package">Domain</a> &gt; <span class="el_source">Task.java</span></div><h1>Task.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+/**
+ *
+ * @author manuelcura
+ */
+
+@Entity
+@Table(name = &quot;Task&quot;)
+public class Task implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = &quot;id&quot;)
+    private Integer id;
+    
+    @Size(max = 64)
+    @NotNull
+    @Basic(optional = false)
+    @Column(name = &quot;title&quot;)
+    private String title;
+    
+    @Size(max = 300)
+    @Column(name = &quot;description&quot;)
+    private String description;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = &quot;date&quot;)
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = &quot;priority&quot;)
+    private int priority;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = &quot;done&quot;)
+    private boolean done;
+    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = &quot;tags&quot;)
+    private TaskTag tags;
+    
+    @JoinColumn(name = &quot;user_id&quot;, referencedColumnName = &quot;id&quot;)
+    @ManyToOne
+    private User userId;
+    
+<span class="nc" id="L75">    public Task() {</span>
+<span class="nc" id="L76">    }</span>
+    
+<span class="fc" id="L78">    public Task(int id, String title, String description, Date date, int priority, boolean done, TaskTag tags, User user_id) {</span>
+<span class="fc" id="L79">        this.id = id;</span>
+<span class="fc" id="L80">        this.title = title;</span>
+<span class="fc" id="L81">        this.description = description;</span>
+<span class="fc" id="L82">        this.date = date;</span>
+<span class="fc" id="L83">        this.priority = priority;</span>
+<span class="fc" id="L84">        this.done = done;</span>
+<span class="fc" id="L85">        this.tags = tags;</span>
+<span class="fc" id="L86">        this.userId = user_id;</span>
+<span class="fc" id="L87">    }</span>
+    
+<span class="fc" id="L89">        public Task(String title, String description, Date date, int priority, boolean done, TaskTag tags, User user_id) {</span>
+<span class="fc" id="L90">        this.title = title;</span>
+<span class="fc" id="L91">        this.description = description;</span>
+<span class="fc" id="L92">        this.date = date;</span>
+<span class="fc" id="L93">        this.priority = priority;</span>
+<span class="fc" id="L94">        this.done = done;</span>
+<span class="fc" id="L95">        this.tags = tags;</span>
+<span class="fc" id="L96">        this.userId = user_id;</span>
+<span class="fc" id="L97">    }</span>
+
+    public Integer getId() {
+<span class="nc" id="L100">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L104">        this.id = id;</span>
+<span class="nc" id="L105">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L108">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="nc" id="L112">        this.title = title;</span>
+<span class="nc" id="L113">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L116">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L120">        this.description = description;</span>
+<span class="nc" id="L121">    }</span>
+
+    public Date getDate() {
+<span class="fc" id="L124">        return date;</span>
+    }
+
+    public void setDate(Date date) {
+<span class="nc" id="L128">        this.date = date;</span>
+<span class="nc" id="L129">    }</span>
+
+    public int getPriority() {
+<span class="fc" id="L132">        return priority;</span>
+    }
+
+    public void setPriority(int priority) {
+<span class="nc" id="L136">        this.priority = priority;</span>
+<span class="nc" id="L137">    }</span>
+
+    public boolean isDone() {
+<span class="fc" id="L140">        return done;</span>
+    }
+
+    public void setDone(boolean done) {
+<span class="nc" id="L144">        this.done = done;</span>
+<span class="nc" id="L145">    }</span>
+
+    public TaskTag getTags() {
+<span class="fc" id="L148">        return tags;</span>
+    }
+
+    public void setTags(TaskTag tags) {
+<span class="nc" id="L152">        this.tags = tags;</span>
+<span class="nc" id="L153">    }</span>
+
+    public User getUserId() {
+<span class="nc" id="L156">        return userId;</span>
+    }
+
+    public void setUserId(User userId) {
+<span class="nc" id="L160">        this.userId = userId;</span>
+<span class="nc" id="L161">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L165">        return &quot;Task{&quot; + &quot;id=&quot; + id + &quot;, title=&quot; + title + &quot;, description=&quot; + description + &quot;, date=&quot; + date + &quot;, priority=&quot; + priority + &quot;, done=&quot; + done + &quot;, tags=&quot; + tags + &quot;, userId=&quot; + userId + '}';</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
